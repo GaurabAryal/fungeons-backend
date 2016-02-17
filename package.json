@@ -1,7 +1,7 @@
 {
-  "name": "SocketIO-Openshift-Example",
+  "name": "Fungeons Backend",
   "version": "1.0.0",
-  "description": "socketio-openshift-example",
+  "description": "",
   "keywords": [
     "openshift",
     "Node.js",
@@ -10,8 +10,8 @@
     "nodejs"
   ],
   "author": {
-    "name": "Me",
-    "email": "me@gmail.com",
+    "name": "Gaurab Aryal",
+    "email": "gaurab.aryal7@gmail.com",
     "url": ""
   },
   "homepage": "",
