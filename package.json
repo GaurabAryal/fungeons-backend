@@ -1,7 +1,7 @@
 {
-  "name": "SocketIO-Openshift-Example",
+  "name": "Fungeons-Backend",
   "version": "1.0.0",
-  "description": "socketio-openshift-example",
+  "description": "",
   "keywords": [
     "openshift",
     "Node.js",
