@@ -13,20 +13,15 @@ server.listen(config.serverport, config.serverip, function() {
   console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
 });
 
-app.use(express.static(__dirname + '/'));
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/api/config', function(req, res) {
-  res.send('var config = ' + JSON.stringify(config));
+  res.json("Hii!!");
 });
 
 io.on('connection', function (socket) {
-  socket.emit('hello', { greeting: 'Hi socket ' + socket.id + ' this is Server speaking! Let\'s play ping-pong. You pass!' });
+  socket.emit('hello', { hello: 'Hi' });
 
-  socket.on('ping', function (data) {
-    console.log("received ping from client: ", data);
-    socket.emit('pong', { id: data.id });
+  socket.on('hi', function (data) {
+    console.log("received hi from client: ", data);
+    socket.emit('sup', { sup: 'What\'s Up?' });
   });
 });
