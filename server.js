@@ -9,14 +9,16 @@ var io = require('socket.io')(server);
 
 console.log("Trying to start server with config:", config.serverip + ":" + config.serverport);
 
+
 server.listen(config.serverport, config.serverip, function() {
+  console.log(config.mongodb);
   console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
 });
 
 app.get('/', function (req, res) {
   res.json("Hii!!");
 });
-
+console.
 io.on('connection', function (socket) {
   socket.emit('hello', { hello: 'Hi' });
 
