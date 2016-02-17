@@ -18,7 +18,6 @@ server.listen(config.serverport, config.serverip, function() {
 app.get('/', function (req, res) {
   res.json("Hii!!");
 });
-console.
 io.on('connection', function (socket) {
   socket.emit('hello', { hello: 'Hi' });
 
