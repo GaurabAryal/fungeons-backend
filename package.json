@@ -24,8 +24,9 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
-    "socket.io":  "~1.0.1",
-    "express":    "~4.10.7"
+    "express": "~4.10.7",
+    "mongoose": "^4.4.4",
+    "socket.io": "~1.0.1"
   },
   "devDependencies": {},
   "bundleDependencies": [],
