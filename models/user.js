@@ -1,7 +1,13 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
-var Schema = mongoose.Schema;
+
+var gameHistory = new db.Schema({
+    name: { type: String, required: true },
+    map: { type: String, required: true },
+    time: { type: Date, default: Date.now },
+    rank: { type: Boolean, default: false }
+});
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -11,13 +17,14 @@ var UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
-  }
+    required: true,
+    select: false
+  },
+  gamehistory: [gameHistory]
 });
 
 UserSchema.pre('save', function(callback) {
   var user = this;
-  callback();
   if (!user.isModified('password')) return callback();
   bcrypt.genSalt(5, function(err, salt) {
     if (err) return callback(err);
@@ -31,6 +38,7 @@ UserSchema.pre('save', function(callback) {
 });
 
 UserSchema.methods.verifyPassword = function(password, cb) {
+  console.log(this.password + "===================" + password);
   bcrypt.compare(password, this.password, function(err, isMatch) {
     if (err) return cb(err);
     cb(null, isMatch);
