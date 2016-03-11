@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
 
-var gameHistory = new db.Schema({
+var gameHistory = new mongoose.Schema({
     name: { type: String, required: true },
     map: { type: String, required: true },
     time: { type: Date, default: Date.now },
