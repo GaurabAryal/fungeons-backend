@@ -8,7 +8,7 @@ var messages = new mongoose.Schema({
 });
 
 var players = new mongoose.Schema({
-    player: { type: db.Schema.Types.ObjectId, required: true },
+    player: { type: mongoose.Schema.Types.ObjectId, required: true },
     date: { type: Date, default: Date.now }
 });
 
@@ -32,4 +32,4 @@ var GameRoomSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('GameRoom', UserSchema);
+module.exports = mongoose.model('GameRoom', GameRoomSchema);

@@ -38,7 +38,6 @@ UserSchema.pre('save', function(callback) {
 });
 
 UserSchema.methods.verifyPassword = function(password, cb) {
-  console.log(this.password + "===================" + password);
   bcrypt.compare(password, this.password, function(err, isMatch) {
     if (err) return cb(err);
     cb(null, isMatch);
