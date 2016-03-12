@@ -40,6 +40,11 @@ module.exports = function(app, io){
     }
   ));
 
+  app.post('/', function(req, res){
+    console.log("hiii");
+
+  });
+
   app.post('/register', function(req, res){
     console.log(req.body);
     var username = req.body.username, password = req.body.password;
