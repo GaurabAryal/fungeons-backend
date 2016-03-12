@@ -38,9 +38,10 @@
   "private": true,
 
   "main": "server.js"
-}
-{
-  "scripts": {
-   "start": "node server.js"
- },
+  {
+    "scripts": {
+     "start": "node server.js"
+   }
+  }
+
 }
