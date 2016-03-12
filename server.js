@@ -31,7 +31,7 @@ apiRoutes.use(function(req, res, next) {
   // decode token
   if (token) {
 
-    // verifies secret and checks expirey
+    // verifies secret and checks if it expired
     jwt.verify(token, config.secret, function(err, decoded) {
       if (err) {
         return res.status(403).json({ success: false, message: 'Failed to authenticate token.' });
