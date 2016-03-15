@@ -1,7 +1,9 @@
 
 var config = require('./config');
-
+var fs           = require('fs');
+var path         = require('path');
 var express = require('express');
+var env          = process.env;
 var app = require('express')();
 var server = require('http').Server(app, function (req, res) {
   var url = req.url;
@@ -26,7 +28,6 @@ var server = require('http').Server(app, function (req, res) {
         res.end();
       } else {
         var ext = path.extname(url).slice(1);
-        res.setHeader('Content-Type', contentTypes[ext]);
         if (ext === 'html') {
           res.setHeader('Cache-Control', 'no-cache, no-store');
         }

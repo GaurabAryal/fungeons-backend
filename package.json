@@ -27,10 +27,12 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "express": "~4.10.7",
+    "fs": "0.0.2",
     "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.4",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
+    "path": "^0.12.7",
     "socket.io": "~1.0.1"
   },
   "devDependencies": {},
