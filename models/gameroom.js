@@ -7,10 +7,6 @@ var messages = new mongoose.Schema({
     viewed: { type: Boolean, default: false }
 });
 
-var players = new mongoose.Schema({
-    player: { type: mongoose.Schema.Types.ObjectId, required: true },
-    date: { type: Date, default: Date.now }
-});
 
 var GameRoomSchema = new mongoose.Schema({
   name: {
@@ -22,7 +18,7 @@ var GameRoomSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  players: [players],
+  players: [],
   map: {
     type: Number,
     required: false
