@@ -61,7 +61,7 @@ module.exports = function(app, io){
   });
 
 
-  app.get('/private', passport.authenticate('basic', { session: false }), function(req, res) {
+  app.get('/login', passport.authenticate('basic', { session: false }), function(req, res) {
     res.status(200).json({token: req.user});
   });
 };
