@@ -20,8 +20,10 @@ module.exports = function(apiRoutes, io){
 
     apiRoutes.get('/gamerooms', function(req, res){
         GameRoom.find(function(err , data){
-            if (err){return res.send("fk off");}
-            return res.send(data);
+            if (err){
+              return res.send(err);
+            }
+            return res.status(200).json(data);
         })
     });
 };
