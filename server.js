@@ -1,41 +1,11 @@
 
-var config = require('./config'); 
+var config = require('./config');
 var fs           = require('fs');
 var path         = require('path');
 var express = require('express');
 var env          = process.env;
 var app = require('express')();
-var server = require('http').Server(app, function (req, res) {
-  var url = req.url;
-  if (url == '/') {
-    url += 'index.html';
-  }
-
-  // IMPORTANT: Your application HAS to respond to GET /health with status 200
-  //            for OpenShift health monitoring
-
-  if (url == '/health') {
-    res.writeHead(200);
-    res.end();
-  } else if (url.indexOf('/info/') == 0) {
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Cache-Control', 'no-cache, no-store');
-    res.end(JSON.stringify(sysInfo[url.slice(6)]()));
-  } else {
-    fs.readFile('./static' + url, function (err, data) {
-      if (err) {
-        res.writeHead(404);
-        res.end();
-      } else {
-        var ext = path.extname(url).slice(1);
-        if (ext === 'html') {
-          res.setHeader('Cache-Control', 'no-cache, no-store');
-        }
-        res.end(data);
-      }
-    });
-  }
-});
+var server = require('http').Server(app);
 var bodyParser = require('body-parser');
 var io = require('socket.io')(server);
 var mongoose = require("mongoose");
