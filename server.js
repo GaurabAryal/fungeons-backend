@@ -1,15 +1,17 @@
 
-var config = require('./config');
+var config       = require('./config');
 var fs           = require('fs');
 var path         = require('path');
-var express = require('express');
+var express      = require('express');
 var env          = process.env;
-var app = require('express')();
-var server = require('http').Server(app);
-var bodyParser = require('body-parser');
-var io = require('socket.io')(server);
-var mongoose = require("mongoose");
-var jwt           = require('jsonwebtoken');
+var redis        = require('socket.io-redis');
+var app          = require('express')();
+var server       = require('http').Server(app);
+var bodyParser   = require('body-parser');
+var io           = require('socket.io')(server);
+var mongoose     = require("mongoose");
+var jwt          = require('jsonwebtoken');
+
 console.log("Trying to start server with config:", config.serverip + ":" + config.serverport);
 
 
@@ -19,7 +21,10 @@ server.listen(config.serverport, config.serverip, function() {
 });
 mongoose.connect(config.mongodb);
 app.use(bodyParser());
-
+//ONLY use redis when deployed.
+if (config.redis_host){
+  io.adapter(redis({ host: config.redis_host, port: config.redis_port }));
+}
 var users = require("./controllers/users")(app, io);
 
 var apiRoutes = express.Router();
