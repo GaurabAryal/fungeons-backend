@@ -19,6 +19,7 @@ server.listen(config.serverport, config.serverip, function() {
   console.log(config.mongodb);
   console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
 });
+
 mongoose.connect(config.mongodb);
 app.use(bodyParser());
 //ONLY use redis when deployed.
