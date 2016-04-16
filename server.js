@@ -25,7 +25,7 @@ app.use(bodyParser());
 //ONLY use redis when deployed.
 if (config.redis_host){
   console.log("Here!");
-  io.adapter(redis({ host: config.redis_host, port: config.redis_port }));
+  io.adapter(redis({ host: config.redis_host, port: config.redis_port, auth_pass: process.env.OPENSHIFT_REDIS_DB_PASSWORD}));
 }
 var users = require("./controllers/users")(app, io);
 
