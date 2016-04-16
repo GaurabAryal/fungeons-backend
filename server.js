@@ -24,6 +24,7 @@ mongoose.connect(config.mongodb);
 app.use(bodyParser());
 //ONLY use redis when deployed.
 if (config.redis_host){
+  console.log("Here!");
   io.adapter(redis({ host: config.redis_host, port: config.redis_port }));
 }
 var users = require("./controllers/users")(app, io);
