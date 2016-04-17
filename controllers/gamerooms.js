@@ -62,10 +62,10 @@ module.exports = function(apiRoutes, io){
       });
   });
 
-  io.on('connection', function (socket) {
-  socket.on('post', function (data) {
-    socket.emit('test', { hello: 'world' });
-    console.log(data);
-    });
-  });
+  // io.on('connection', function (socket) {
+  // socket.on('post', function (data) {
+  //   socket.emit('test', { hello: 'world' });
+  //   console.log(data);
+  //   });
+  // });
 };
