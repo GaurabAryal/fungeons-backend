@@ -13,8 +13,6 @@ var mongoose     = require("mongoose");
 var jwt          = require('jsonwebtoken');
 
 console.log("Trying to start server with config:", config.serverip + ":" + config.serverport);
-
-
 server.listen(config.serverport, config.serverip, function() {
   console.log(config.mongodb);
   console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
