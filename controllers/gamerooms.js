@@ -10,8 +10,9 @@ module.exports = function(apiRoutes, io){
      var gameroom = new GameRoom({
          name: req.body.name,
          ownerId: req.decoded._doc._id,
-         players: req.decoded._doc
-
+         players: req.decoded._doc,
+         map: parseInt(req.body.map),
+         isJoinable: req.body.isJoinable
      });
 
      gameroom.save(function(err, data){

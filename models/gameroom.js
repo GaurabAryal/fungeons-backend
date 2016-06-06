@@ -21,7 +21,11 @@ var GameRoomSchema = new mongoose.Schema({
   players: [],
   map: {
     type: Number,
-    required: false
+    required: true
+  },
+  isJoinable: {
+    type: Boolean,
+    required: true
   },
   messageList: [messages],
   started: { type: Boolean, default: false }
