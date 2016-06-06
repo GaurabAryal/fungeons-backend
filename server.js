@@ -25,16 +25,15 @@ app.use(bodyParser());
 var users = require("./controllers/users")(app, io);
 
 var apiRoutes = express.Router();
-
+/**
+*APIRoutes requires a token so anything fallen under here requires
+*a JWT token
+**/
 apiRoutes.use(function(req, res, next) {
-
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  console.log(token);
   // decode token
   if (token) {
-
     // verifies secret and checks if it expired
     jwt.verify(token, config.secret, function(err, decoded) {
       if (err) {
@@ -45,16 +44,13 @@ apiRoutes.use(function(req, res, next) {
         next();
       }
     });
-
   } else {
-
     // if there is no token
     // return an error
     return res.status(403).send({
         success: false,
         message: 'No token provided.'
     });
-
   }
 });
 

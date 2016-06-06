@@ -41,7 +41,6 @@ module.exports = function(app, io){
   ));
 
   app.post('/register', function(req, res){
-    console.log(req.body);
     var username = req.body.username, password = req.body.password;
     var user = new User({
       username: username,
